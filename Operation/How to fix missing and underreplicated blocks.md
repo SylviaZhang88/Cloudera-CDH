@@ -7,6 +7,7 @@ hdfs fsck /path/to/corrupt/file -locations -blocks -files
 
 > 这是一个正常的文件信息，可以看到文件大小和所在的datanode  
 > hdfs fsck /hbase/archive/data/default/mtms_scd/ f8cc813954beeed516c20abf837e95bf/f/04a14e1ee9de472f803fbb86ad11ff0f  -locations -blocks -files  
+> 
 > Connecting to namenode via http://IC-CDH-R1-1:50070 
 > FSCK started by root (auth:SIMPLE) from /192.168.20.104 for path /hbase/archive/data/default/mtms_scd/f8cc813954beeed516c20abf837e95bf/f/04a14e1ee9de472f803fbb86ad11ff0f at Tue Jul 03 10:23:25 CST 2018 
 /hbase/archive/data/default/mtms_scd/f8cc813954beeed516c20abf837e95bf/f/04a14e1ee9de472f803fbb86ad11ff0f **46344876** bytes, 1 block(s):  OK  0. BP-1711507351-192.168.10.5-1515394480336:blk_1074008410_267712 len=46344876 Live_repl=3  
