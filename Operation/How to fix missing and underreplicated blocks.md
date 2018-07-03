@@ -5,7 +5,7 @@ sudo -u hdfs hdfs fsck / | egrep -v '^\.+$' | grep -v eplica
 找到异常文件位置  
 hdfs fsck /path/to/corrupt/file -locations -blocks -files   
 
-> 这是一个正常的文件信息，可以看到文件大小和所在的datanode
+> 这是一个正常的文件信息，可以看到文件大小和所在的datanode  
 > hdfs fsck /hbase/archive/data/default/mtms_scd/ f8cc813954beeed516c20abf837e95bf/f/04a14e1ee9de472f803fbb86ad11ff0f  -locations -blocks -files  
 > Connecting to namenode via http://IC-CDH-R1-1:50070 
 > FSCK started by root (auth:SIMPLE) from /192.168.20.104 for path /hbase/archive/data/default/mtms_scd/f8cc813954beeed516c20abf837e95bf/f/04a14e1ee9de472f803fbb86ad11ff0f at Tue Jul 03 10:23:25 CST 2018 
