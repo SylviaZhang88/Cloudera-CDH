@@ -147,3 +147,5 @@ http://192.168.0.53:7070/kylin
 # username/password  ADMIN/KYLIN
 ## kylin.sh stop
 ```
+
+
