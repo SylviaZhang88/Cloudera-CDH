@@ -76,7 +76,7 @@ druid.indexer.logs.directory=/druid/indexing-logs
 # 参考链接
 https://blog.csdn.net/qq273681448/article/details/75050513
 https://blog.csdn.net/TG229dvt5I93mxaQ5A6U/article/details/79089975
-http://kylin.apache.org/docs21/install/index.html
+
 
 # 安装
 ## zhy-cdh-3
@@ -102,14 +102,7 @@ pip install superset
 
 #创建管理员用户名和密码 
 # fabmanager create-admin --app superset 
-# Username [admin]: root
-# User first name [admin]: root
-# User last name [user]: root
-# Email [admin@fab.org]: root@leadingsoft.com
-# Password: root1234
-# Repeat for confirmation: root1234
-# Recognized Database Authentications.
-# Admin User root created.
+fabmanager create-admin --app superset --username admin --password admin --firstname admin --lastname admin --email admin@leadingsoft.com
 
 #初始化Superset 
 superset db upgrade 
@@ -119,6 +112,9 @@ superset load_examples
 
 #创建默认角色和权限 
 superset init 
+
+# 
+pip install kylinpy
 
 #启动Superset 
 nohup superset runserver &
@@ -130,6 +126,9 @@ http://192.168.0.53:8088
 
 ## Kylin
 ```shell
+# 参考链接
+http://kylin.apache.org/docs21/install/index.html
+
 wget http://mirrors.tuna.tsinghua.edu.cn/apache/kylin/apache-kylin-2.4.0/apache-kylin-2.4.0-bin-cdh57.tar.gz
 
 tar -xzvf apache-kylin-2.4.0-bin-cdh57.tar.gz
@@ -146,6 +145,29 @@ nohup bin/kylin.sh start &
 http://192.168.0.53:7070/kylin
 # username/password  ADMIN/KYLIN
 ## kylin.sh stop
+
+./bin/sample.sh
+# Sample cube is created successfully in project 'learn_kylin'.
+# Restart Kylin Server or click Web UI => System Tab => Reload Metadata to take effect
+```
+
+## superset配置kylin
+```shell
+# 参考链接
+https://github.com/Kyligence/kylinpy
+http://lxw1234.com/archives/2018/03/904.htm
+https://yq.aliyun.com/articles/181110
+
+# Sources=>Databases 右上角加号添加
+
+# SQLAlchemy URI
+kylin://ADMIN:KYLIN@192.168.0.53:7070/learn_kylin?version=v1
+# 点击Test Connection, 链接成功提示 Seems OK
+# 可以在该页下方看到learn_kylin所有的表
+
+# 勾选Expose in SQL Lab和 Allow Run Sync项
+
+
 ```
 
 
