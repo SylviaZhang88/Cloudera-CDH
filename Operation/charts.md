@@ -134,6 +134,9 @@ wget http://mirrors.tuna.tsinghua.edu.cn/apache/kylin/apache-kylin-2.4.0/apache-
 tar -xzvf apache-kylin-2.4.0-bin-cdh57.tar.gz
 export KYLIN_HOME=/opt/apache-kylin-2.4.0-bin-cdh57
 
+vi ~/.bashrc
+# 添加export KYLIN_HOME=/opt/apache-kylin-2.4.0-bin-cdh57
+
 cd apache-kylin-2.4.0-bin-cdh57
 # 检查环境
 ./bin/check-env.sh
@@ -168,6 +171,30 @@ kylin://ADMIN:KYLIN@192.168.0.53:7070/learn_kylin?version=v1
 # 勾选Expose in SQL Lab和 Allow Run Sync项
 
 
+```
+
+## Kylin配置CDH
+```shell
+# 参考链接 
+http://kylin.apache.org/docs20/tutorial/cube_spark.html
+
+# 拷贝cdh配置文件到指定路径
+cd /opt/apache-kylin-2.4.0-bin-cdh57
+mkdir hadoop_conf
+cp /etc/hadoop/conf/hdfs-site.xml ./hadoop_conf/
+cp /etc/hadoop/conf/yarn-site.xml ./hadoop_conf/
+cp /etc/hadoop/conf/core-site.xml ./hadoop_conf/
+cp /etc/hbase/conf/hdfs-site.xml ./hadoop_conf/
+cp /etc/hbase/conf/hbase-site.xml ./hadoop_conf/
+cp /etc/hive/conf/hive-site.xml ./hadoop_conf/
+
+# 修改hadoop配置文件路径
+vi conf/kylin.properties
+kylin.env.hadoop-conf-dir=/opt/apache-kylin-2.4.0-bin-cdh57/hadoop_conf
+
+# 重启   
+bin/kylin.sh  stop
+bin/kylin.sh  start
 ```
 
 
